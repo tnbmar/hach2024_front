@@ -50,3 +50,8 @@ export type TournamentsListItem = {
   users: User[];
   winner: User | null;
 };
+export type Stats = {
+  match_count: number;
+  rating_percent: null | number;
+  win_count: number;
+};

@@ -1,4 +1,4 @@
-import { AuthDto, RegDto, ResResponse } from "@/types";
+import { AuthDto, RegDto, ResResponse, Stats, User } from "@/types";
 import httpClient from ".";
 
 export const signUp = async (dto: RegDto) => {
@@ -13,4 +13,12 @@ export const signUp = async (dto: RegDto) => {
 export const signIn = async (dto: AuthDto) => {
   const res = await httpClient<ResResponse>({ url: "auth", method: "POST", data: dto });
   return res;
+};
+
+export const fetchMe = async () => {
+  return await httpClient<{ user: User }>({ url: "/user/me" });
+};
+
+export const getStats = async () => {
+  return await httpClient<Stats>({ url: "/stats/me" });
 };
