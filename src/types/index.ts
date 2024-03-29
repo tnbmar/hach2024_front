@@ -66,11 +66,24 @@ export type Info = {
   status: Status;
   winner_id: null;
   winner: null;
+  users: User[];
 };
 
-export type Match = {};
+export type Match = {
+  id: number;
+  createdAt: string;
+  first_player_id: number;
+  second_player_id: number;
+  winner_id: null | number;
+  tournamentId: number;
+  first_score: number | null;
+  second_score: number | null;
+  index: 1 | 2 | 3;
+};
+
+export type Tour = Match[];
 
 export type TournamentReceive = {
   info: Info;
-  matches: Match[];
+  mathes: Tour[];
 };

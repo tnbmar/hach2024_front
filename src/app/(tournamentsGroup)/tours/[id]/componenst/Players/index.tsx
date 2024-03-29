@@ -1,38 +1,8 @@
+import { User } from "@/types";
 import PlayerCard from "../PlayerCard";
 import S from "./Players.module.scss";
 
-const MOCKS = [
-  {
-    avatar: "/images/default.webp",
-    name: "user",
-  },
-  {
-    avatar: "/images/default.webp",
-    name: "user1",
-  },
-  {
-    avatar: "/images/default.webp",
-    name: "user2",
-  },
-  {
-    avatar: "/images/default.webp",
-    name: "user3",
-  },
-  {
-    avatar: "/images/default.webp",
-    name: "user4",
-  },
-  {
-    avatar: "/images/default.webp",
-    name: "user5",
-  },
-  {
-    avatar: "/images/default.webp",
-    name: "user6",
-  },
-];
-
-const Players = () => {
+const Players = ({ users }: { users: User[] }) => {
   return (
     <div className={S.wrap}>
       <div>
@@ -40,8 +10,8 @@ const Players = () => {
       </div>
 
       <div className={S.list}>
-        {MOCKS.map((mock) => (
-          <PlayerCard key={mock.name} {...mock} />
+        {users.map((user) => (
+          <PlayerCard key={user.id} user={user} />
         ))}
       </div>
     </div>

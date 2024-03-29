@@ -22,8 +22,8 @@ const Tour = async ({ params }: TourProps) => {
     <>
       <Header info={data.info} />
       <div className={S.content}>
-        <Table />
-        <Players />
+        <Table tours={data.mathes} />
+        <Players users={data.info.users} />
       </div>
     </>
   );

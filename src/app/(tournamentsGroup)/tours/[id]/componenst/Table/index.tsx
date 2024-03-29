@@ -2,81 +2,29 @@
 
 import { Bracket, IRoundProps } from "react-brackets";
 import S from "./Table.module.scss";
+import { Tour } from "@/types";
+import { useMemo } from "react";
+import dayjs from "dayjs";
 
-const rounds: IRoundProps[] = [
-  {
-    title: "Round one",
-    seeds: [
-      {
-        id: 1,
-        date: new Date().toDateString(),
-        teams: [{ name: "Team A" }, { name: "Team B" }],
-      },
-      {
-        id: 2,
-        date: new Date().toDateString(),
-        teams: [{ name: "Team C" }, { name: "Team D" }],
-      },
-      {
-        id: 3,
-        date: new Date().toDateString(),
-        teams: [{ name: "Team C" }, { name: "Team D" }],
-      },
-      {
-        id: 4,
-        date: new Date().toDateString(),
-        teams: [{ name: "Team C" }, { name: "Team D" }],
-      },
-    ],
-  },
-  {
-    title: "Round two",
-    seeds: [
-      {
-        id: 3,
-        date: new Date().toDateString(),
-        teams: [{ name: "Team A" }, { name: "Team C" }],
-      },
-      {
-        id: 3,
-        date: new Date().toDateString(),
-        teams: [{ name: "Team A" }, { name: "Team C" }],
-      },
-    ],
-  },
-  {
-    title: "Round two",
-    seeds: [
-      {
-        id: 3,
-        date: new Date().toDateString(),
-        teams: [{ name: "Team A" }, { name: "Team C" }],
-      },
-    ],
-  },
-  {
-    title: "Round two",
-    seeds: [
-      {
-        id: 3,
-        date: new Date().toDateString(),
-        teams: [{ name: "Team A" }, { name: "Team C" }],
-      },
-    ],
-  },
-  {
-    title: "Round two",
-    seeds: [
-      {
-        id: 3,
-        date: new Date().toDateString(),
-        teams: [{ name: "Team A" }, { name: "Team C" }],
-      },
-    ],
-  },
-];
+const Table = ({ tours }: { tours: Tour[] }) => {
+  const formattedData = useMemo(() => {
+    const rounds: IRoundProps[] = tours.map((tour, i) => ({
+      title: `Tour ${i + 1}`,
+      seeds: [
+        ...tour.map((match) => ({
+          id: match.id,
+          date: dayjs(match.createdAt).format("DD.MM.YYYY HH:mm"),
+          teams: [
+            { name: `User #${match.first_player_id}` },
+            { name: `User #${match.second_player_id}` },
+          ],
+        })),
+      ],
+    }));
 
-const Table = () => {
+    return rounds;
+  }, [tours]);
+
   return (
     <div className={S.wrap}>
       <div>
@@ -84,7 +32,7 @@ const Table = () => {
       </div>
 
       <div className={S.tableWrapper}>
-        <Bracket rounds={rounds} bracketClassName={S.scrolledContent} />
+        <Bracket rounds={formattedData} bracketClassName={S.scrolledContent} />
       </div>
     </div>
   );
