@@ -1,6 +1,6 @@
 import Link from "next/link";
 import S from "./Header.module.scss";
-import { URLS } from "@/urls";
+import { URLS } from "@/constants/urls";
 import Back from "icons/back.svg";
 import Badge from "@/ui/Badge";
 import Button from "@/ui/Button";
