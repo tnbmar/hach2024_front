@@ -29,3 +29,24 @@ export type ResResponse = {
   token: string;
   user: User;
 };
+
+export enum TournamentEnum {
+  FUTURE = "Предстоит",
+  NOW = "В процессе",
+  FINISHED = "Завершен",
+}
+
+export type TournamentResList = {
+  list: TournamentsListItem[];
+};
+
+export type TournamentsListItem = {
+  id: number;
+  name: string;
+  icon: string;
+  createdAt: string;
+  status: "FUTURE" | "NOW" | "FINISHED";
+  winner_id: number | null;
+  users: User[];
+  winner: User | null;
+};

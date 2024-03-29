@@ -1,22 +1,14 @@
-import { Tournament } from "@/types";
+import { Tournament, TournamentsListItem } from "@/types";
 import TournamentCard from "../TournamentCard";
 import S from "./Tournaments.module.scss";
 
-const MOCKS: Tournament[] = [
-  { id: 1, avatar: "/images/default.webp", name: "User", status: "wait", players: 6 },
-  { id: 2, avatar: "/images/default.webp", name: "User1", status: "wait", players: 6 },
-  { id: 3, avatar: "/images/default.webp", name: "User2", status: "wait", players: 6 },
-  { id: 4, avatar: "/images/default.webp", name: "User3", status: "wait", players: 6 },
-  { id: 5, avatar: "/images/default.webp", name: "User4", status: "wait", players: 6 },
-];
-
-const Tournaments = async () => {
+const Tournaments = async ({ list }: { list: TournamentsListItem[] }) => {
   await new Promise((resolve) => setTimeout(() => resolve(undefined), 10));
 
   return (
     <div className={S.list}>
-      {MOCKS.map((mock) => (
-        <TournamentCard key={mock.name} tournament={mock} />
+      {list.map((elem) => (
+        <TournamentCard key={elem.id} {...elem} />
       ))}
     </div>
   );

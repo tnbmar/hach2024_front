@@ -6,6 +6,7 @@ import DialogModal from "@/ui/Dialog";
 import { useState } from "react";
 import Input from "@/ui/Input";
 import { useForm } from "react-hook-form";
+import Link from "next/link";
 
 const CreateTournament = () => {
   const [open, setOpen] = useState(false);
@@ -13,16 +14,21 @@ const CreateTournament = () => {
 
   return (
     <>
-      <Button className={S.createTournament} onClick={() => setOpen(true)}>
-        Создать турнир +
-      </Button>
+      <Link
+        href={"https://api.tnbmar.ru/admin/resources/Tournament/actions/new"}
+        target="_blank"
+      >
+        <Button className={S.createTournament} onClick={() => setOpen(true)}>
+          Создать турнир +
+        </Button>
+      </Link>
 
-      <DialogModal open={open} onChangeOpen={setOpen} title="Создание турнира">
+      {/* <DialogModal open={open} onChangeOpen={setOpen} title="Создание турнира">
         <div className={S.content}>
           <Input {...register} placeholder="Название" />
           <Button>Создать</Button>
         </div>
-      </DialogModal>
+      </DialogModal> */}
     </>
   );
 };
