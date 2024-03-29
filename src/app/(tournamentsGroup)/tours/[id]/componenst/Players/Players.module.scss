@@ -1,0 +1,19 @@
+.wrap {
+  padding: 20px;
+  background-color: #0b090d;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.title {
+  color: #ededed;
+  font-size: 24px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}

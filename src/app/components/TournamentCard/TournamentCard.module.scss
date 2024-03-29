@@ -4,6 +4,13 @@
   width: 100%;
   justify-content: space-between;
   padding: 12px 0;
+  background-color: inherit;
+  filter: brightness(1);
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(1.2);
+  }
 }
 
 .avatar {

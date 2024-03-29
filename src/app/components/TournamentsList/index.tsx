@@ -4,7 +4,6 @@ import { Suspense } from "react";
 import CreateTournament from "../CreateTournament";
 import Tournaments from "../Tournaments";
 import S from "./TournamentsList.module.scss";
-import PacmanLoader from "react-spinners/PacmanLoader";
 import Loader from "@/ui/Loader";
 
 const TournamentsList = () => {

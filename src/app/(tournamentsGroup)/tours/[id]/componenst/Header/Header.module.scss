@@ -1,0 +1,36 @@
+.wrap {
+  display: flex;
+  background-color: #0b090d;
+  border-radius: 30px;
+  padding: 20px;
+  justify-content: space-between;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+}
+
+.leftWrap {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.rightWrap {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.name {
+  color: #ededed;
+  font-size: 28px;
+}
+
+.bank {
+  color: #ededed;
+  font-size: 16px;
+}

@@ -3,4 +3,5 @@ export type Tournament = {
   avatar: string;
   status: "wait";
   players: number;
+  id: number;
 };

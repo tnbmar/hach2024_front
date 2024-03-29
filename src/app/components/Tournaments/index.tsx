@@ -1,13 +1,13 @@
-import { Tournament } from "@/app/types";
+import { Tournament } from "@/types";
 import TournamentCard from "../TournamentCard";
 import S from "./Tournaments.module.scss";
 
 const MOCKS: Tournament[] = [
-  { avatar: "/images/default.webp", name: "User", status: "wait", players: 6 },
-  { avatar: "/images/default.webp", name: "User1", status: "wait", players: 6 },
-  { avatar: "/images/default.webp", name: "User2", status: "wait", players: 6 },
-  { avatar: "/images/default.webp", name: "User3", status: "wait", players: 6 },
-  { avatar: "/images/default.webp", name: "User4", status: "wait", players: 6 },
+  { id: 1, avatar: "/images/default.webp", name: "User", status: "wait", players: 6 },
+  { id: 2, avatar: "/images/default.webp", name: "User1", status: "wait", players: 6 },
+  { id: 3, avatar: "/images/default.webp", name: "User2", status: "wait", players: 6 },
+  { id: 4, avatar: "/images/default.webp", name: "User3", status: "wait", players: 6 },
+  { id: 5, avatar: "/images/default.webp", name: "User4", status: "wait", players: 6 },
 ];
 
 const Tournaments = async () => {
