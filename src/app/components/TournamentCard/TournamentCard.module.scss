@@ -81,8 +81,16 @@
 }
 
 .actions {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 8px;
   align-self: center;
   width: 100%;
+}
+
+.accept {
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  gap: 10px;
 }
