@@ -23,6 +23,7 @@ export type User = {
   username: string;
   address: string;
   email: string;
+  rewards?: RewardItem[];
 };
 
 export type ResResponse = {
@@ -54,4 +55,18 @@ export type Stats = {
   match_count: number;
   rating_percent: null | number;
   win_count: number;
+};
+
+export type RewardStatus = "MATCH" | "AUTH" | "MORE_MATCH";
+
+export type RewardItem = {
+  id: number;
+  name: string;
+  icon: string;
+  status: RewardStatus;
+};
+
+export type RewardsRest = {
+  count: number;
+  results: RewardItem[];
 };
