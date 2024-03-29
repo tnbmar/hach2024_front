@@ -1,0 +1,66 @@
+.headerWrap {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  background-color: #0b090d;
+  border-radius: 30px;
+  width: 100%;
+}
+
+.avatar {
+  border-radius: 15px;
+}
+
+.leftWrapper {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.attrsList {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.nickname {
+  color: #8e8ffa;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.idLabel {
+  color: #ededed;
+  font-size: 16px;
+}
+
+.mailValue {
+  font-size: 10px;
+  color: #8c8c8c;
+}
+
+.rightWrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.attrColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.attrColumnLabel {
+  font-size: 16px;
+  color: #8e8ffa;
+  font-weight: 700;
+}
+
+.attrColumnValue {
+  color: #ededed;
+  font-weight: 700;
+  font-size: 32px;
+}

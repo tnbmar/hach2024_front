@@ -1,0 +1,19 @@
+.wrap {
+  padding: 20px;
+  background-color: #0b090d;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.title {
+  font-size: 32px;
+  color: #ededed;
+}
+
+.headerWrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

@@ -1,0 +1,22 @@
+.badge {
+  border-radius: 20px;
+  padding: 0 20px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+
+  &.wait {
+    color: #0ecae6;
+    background-color: #0ecae64d;
+  }
+
+  &.progress {
+    color: #4bce97;
+    background-color: #4bce974d;
+  }
+
+  &.closed {
+    background-color: #d05b664d;
+    color: #d05b66;
+  }
+}

@@ -1,12 +1,13 @@
 import { forwardRef } from "react";
 import S from "./Button.module.scss";
+import classNames from "classnames";
 
 interface InputProps extends React.InputHTMLAttributes<HTMLButtonElement> {}
 
 const Button = forwardRef<HTMLButtonElement, InputProps>(
-  ({ children, type, ...props }, ref) => {
+  ({ children, type, className, ...props }, ref) => {
     return (
-      <button ref={ref} {...props} className={S.buttonWrap}>
+      <button ref={ref} {...props} className={classNames(S.buttonWrap, className)}>
         {children}
       </button>
     );
