@@ -5,8 +5,9 @@ import CreateTournament from "../CreateTournament";
 import Tournaments from "../Tournaments";
 import S from "./TournamentsList.module.scss";
 import Loader from "@/ui/Loader";
+import { TournamentsListItem } from "@/types";
 
-const TournamentsList = () => {
+const TournamentsList = ({ list }: { list: TournamentsListItem[] }) => {
   return (
     <div className={S.wrap}>
       <div className={S.headerWrap}>
@@ -14,7 +15,7 @@ const TournamentsList = () => {
         <CreateTournament />
       </div>
       <Suspense fallback={<Loader />}>
-        <Tournaments />
+        <Tournaments list={list} />
       </Suspense>
     </div>
   );

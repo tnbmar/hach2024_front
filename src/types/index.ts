@@ -30,6 +30,26 @@ export type ResResponse = {
   user: User;
 };
 
+export enum TournamentEnum {
+  FUTURE = "Предстоит",
+  NOW = "В процессе",
+  FINISHED = "Завершен",
+}
+
+export type TournamentResList = {
+  list: TournamentsListItem[];
+};
+
+export type TournamentsListItem = {
+  id: number;
+  name: string;
+  icon: string;
+  createdAt: string;
+  status: "FUTURE" | "NOW" | "FINISHED";
+  winner_id: number | null;
+  users: User[];
+  winner: User | null;
+};
 export type Stats = {
   match_count: number;
   rating_percent: null | number;
