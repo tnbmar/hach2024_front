@@ -4,8 +4,9 @@ import { URLS } from "@/constants/urls";
 import Back from "icons/back.svg";
 import Badge from "@/ui/Badge";
 import Button from "@/ui/Button";
+import { Info } from "@/types";
 
-const Header = () => {
+const Header = ({ info }: { info: Info }) => {
   return (
     <div className={S.wrap}>
       <div className={S.leftWrap}>
@@ -16,9 +17,9 @@ const Header = () => {
           </div>
         </Link>
 
-        <span className={S.name}>Турнир NAME</span>
+        <span className={S.name}>{info.name}</span>
 
-        <Badge status="wait">wait</Badge>
+        <Badge status={info.status}>{info.status}</Badge>
       </div>
 
       <div className={S.rightWrap}>

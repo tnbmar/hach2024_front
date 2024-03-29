@@ -24,17 +24,6 @@ const TournamentCard = ({
   winner_id,
   users,
 }: TournamentsListItem) => {
-  const validateStatus = useMemo(() => {
-    switch (status) {
-      case "FUTURE":
-        return "wait";
-      case "FINISHED":
-        return "closed";
-      case "NOW":
-        return "progress";
-    }
-  }, [status]);
-
   return (
     <Link href={URLS.TOURNAMENT(id)}>
       <div className={S.tournament}>
@@ -47,7 +36,7 @@ const TournamentCard = ({
           <div className={S.column}>
             <span className={S.columnTitle}>Cтатус</span>
 
-            <Badge status={validateStatus}>{TournamentEnum[status]}</Badge>
+            <Badge status={status}>{TournamentEnum[status]}</Badge>
           </div>
 
           <div className={S.column}>
@@ -61,7 +50,6 @@ const TournamentCard = ({
 
         <div className={S.actions}>
           <SponsorButton />
-          {}
           <Button>Участвовать</Button>
         </div>
       </div>

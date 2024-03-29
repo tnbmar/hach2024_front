@@ -5,17 +5,17 @@
   display: flex;
   align-items: center;
 
-  &.wait {
+  &.FUTURE {
     color: #0ecae6;
     background-color: #0ecae64d;
   }
 
-  &.progress {
+  &.NOW {
     color: #4bce97;
     background-color: #4bce974d;
   }
 
-  &.closed {
+  &.FINISHED {
     background-color: #d05b664d;
     color: #d05b66;
   }

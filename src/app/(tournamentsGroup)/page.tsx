@@ -6,9 +6,11 @@ import { COOKIES } from "@/constants/cookies";
 
 const Home = async () => {
   const token = cookies().get(COOKIES.TOKEN)?.value;
+
   const {
     data: { list },
   } = await getTournaments(token);
+
   return (
     <>
       <Header />

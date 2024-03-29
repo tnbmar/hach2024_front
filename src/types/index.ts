@@ -40,12 +40,14 @@ export type TournamentResList = {
   list: TournamentsListItem[];
 };
 
+export type Status = "FUTURE" | "NOW" | "FINISHED";
+
 export type TournamentsListItem = {
   id: number;
   name: string;
   icon: string;
   createdAt: string;
-  status: "FUTURE" | "NOW" | "FINISHED";
+  status: Status;
   winner_id: number | null;
   users: User[];
   winner: User | null;
@@ -54,4 +56,21 @@ export type Stats = {
   match_count: number;
   rating_percent: null | number;
   win_count: number;
+};
+
+export type Info = {
+  id: number;
+  name: string;
+  icon: string;
+  createdAt: string;
+  status: Status;
+  winner_id: null;
+  winner: null;
+};
+
+export type Match = {};
+
+export type TournamentReceive = {
+  info: Info;
+  matches: Match[];
 };

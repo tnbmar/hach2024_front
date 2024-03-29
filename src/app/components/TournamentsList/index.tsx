@@ -1,5 +1,3 @@
-"use client";
-
 import { Suspense } from "react";
 import CreateTournament from "../CreateTournament";
 import Tournaments from "../Tournaments";
