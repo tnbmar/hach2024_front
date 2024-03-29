@@ -1,5 +1,6 @@
 .tournament {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 0.8fr 1fr;
   align-items: center;
   width: 100%;
   justify-content: space-between;
@@ -13,7 +14,8 @@
     filter: brightness(1.2);
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 920px) {
+    display: flex;
     flex-direction: column;
     margin-left: auto;
     justify-content: flex-start;
