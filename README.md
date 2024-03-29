@@ -1,3 +1,7 @@
+Frontend: https://github.com/tnbmar/hack2024_front\n
+Backend: https://github.com/tnbmar/hack_24_back\n
+Solidity: https://github.com/tnbmar/hack2024_contracts\n
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
