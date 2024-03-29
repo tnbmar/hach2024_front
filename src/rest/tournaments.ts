@@ -1,4 +1,4 @@
-import { TournamentResList } from "@/types";
+import { TournamentResList, TournamentsListItem } from "@/types";
 import httpClient from ".";
 
 export const getTournaments = async (token?: string) => {
@@ -7,6 +7,17 @@ export const getTournaments = async (token?: string) => {
     method: "GET",
     headers: {
       Authorization: token,
+    },
+  });
+  return res;
+};
+
+export const signInTournament = async (id: number) => {
+  const res = await httpClient<TournamentsListItem>({
+    url: "tournaments/participate",
+    method: "POST",
+    data: {
+      tournamentId: id,
     },
   });
   return res;

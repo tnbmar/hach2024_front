@@ -1,13 +1,19 @@
 "use client";
 
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import CreateTournament from "../CreateTournament";
 import Tournaments from "../Tournaments";
 import S from "./TournamentsList.module.scss";
 import Loader from "@/ui/Loader";
 import { TournamentsListItem } from "@/types";
+import { useTournamentsStore } from "@/stores/tournaments";
 
 const TournamentsList = ({ list }: { list: TournamentsListItem[] }) => {
+  const { setTournament } = useTournamentsStore();
+
+  useEffect(() => {
+    setTournament(list);
+  }, [list]);
   return (
     <div className={S.wrap}>
       <div className={S.headerWrap}>
@@ -15,7 +21,7 @@ const TournamentsList = ({ list }: { list: TournamentsListItem[] }) => {
         <CreateTournament />
       </div>
       <Suspense fallback={<Loader />}>
-        <Tournaments list={list} />
+        <Tournaments />
       </Suspense>
     </div>
   );

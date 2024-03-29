@@ -9,6 +9,9 @@ import Link from "next/link";
 import { URLS } from "@/constants/urls";
 import SponsorButton from "../SponsorButton";
 import { useMemo } from "react";
+import { useTournamentsStore } from "@/stores/tournaments";
+import { useUserStore } from "@/stores/user";
+import { getTournaments, signInTournament } from "@/rest/tournaments";
 
 type TournamentCardProps = {
   tournament: Tournament;
@@ -16,14 +19,10 @@ type TournamentCardProps = {
 
 const MAX_MOCK_PLAYERS = 8;
 
-const TournamentCard = ({
-  icon,
-  id,
-  name,
-  status,
-  winner_id,
-  users,
-}: TournamentsListItem) => {
+const TournamentCard = ({ icon, id, name, status, users }: TournamentsListItem) => {
+  const { setTournament } = useTournamentsStore();
+  const { user } = useUserStore();
+
   const validateStatus = useMemo(() => {
     switch (status) {
       case "FUTURE":
@@ -34,6 +33,24 @@ const TournamentCard = ({
         return "progress";
     }
   }, [status]);
+
+  const validateMyStatus = useMemo(() => {
+    if (user) {
+      return users.find((elem) => elem.id === user.id);
+    }
+  }, [user]);
+
+  const acceptTournament = async () => {
+    const { data } = await signInTournament(id);
+    updateData();
+  };
+
+  const updateData = async () => {
+    const {
+      data: { list },
+    } = await getTournaments();
+    setTournament(list);
+  };
 
   return (
     <Link href={URLS.TOURNAMENT(id)}>
@@ -61,8 +78,14 @@ const TournamentCard = ({
 
         <div className={S.actions}>
           <SponsorButton />
-          {}
-          <Button>Участвовать</Button>
+          {validateMyStatus ? (
+            <div className={S.accept}>
+              <Image src={"/icons/access.svg"} width={20} height={20} alt="" />
+              <span className={S.columnTitle}>Вы учавствуете</span>
+            </div>
+          ) : (
+            <Button onClick={acceptTournament}>Участвовать</Button>
+          )}
         </div>
       </div>
     </Link>

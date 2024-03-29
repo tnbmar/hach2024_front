@@ -1,16 +1,21 @@
 import { Tournament, TournamentsListItem } from "@/types";
 import TournamentCard from "../TournamentCard";
 import S from "./Tournaments.module.scss";
+import { useTournamentsStore } from "@/stores/tournaments";
 
-const Tournaments = async ({ list }: { list: TournamentsListItem[] }) => {
-  await new Promise((resolve) => setTimeout(() => resolve(undefined), 10));
+const Tournaments = () => {
+  const { tournaments } = useTournamentsStore();
 
   return (
-    <div className={S.list}>
-      {list.map((elem) => (
-        <TournamentCard key={elem.id} {...elem} />
-      ))}
-    </div>
+    <>
+      {tournaments !== null && (
+        <div className={S.list}>
+          {tournaments.map((elem) => (
+            <TournamentCard key={elem.id} {...elem} />
+          ))}
+        </div>
+      )}
+    </>
   );
 };
 
