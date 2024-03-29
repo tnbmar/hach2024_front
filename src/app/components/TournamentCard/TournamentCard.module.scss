@@ -7,20 +7,37 @@
   background-color: inherit;
   filter: brightness(1);
   cursor: pointer;
+  gap: 20px;
 
   &:hover {
     filter: brightness(1.2);
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    margin-left: auto;
+    justify-content: flex-start;
   }
 }
 
 .avatar {
   border-radius: 13px;
+
+  @media (max-width: 768px) {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 .leftWrap {
   display: flex;
   gap: 12px;
   align-items: center;
+
+  @media (max-width: 768px) {
+    justify-self: start;
+    width: 100%;
+  }
 }
 
 .username {
@@ -34,6 +51,13 @@
   align-items: center;
   width: fit-content;
   gap: 20px;
+  margin-left: auto;
+
+  @media (max-width: 768px) {
+    justify-self: start;
+    width: 100%;
+    margin-left: unset;
+  }
 }
 
 .column {
@@ -54,4 +78,11 @@
   font-size: 16px;
   height: 42px;
   display: block;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  align-self: center;
+  width: 100%;
 }

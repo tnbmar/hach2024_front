@@ -2,9 +2,33 @@
   padding: 20px;
   background-color: #0b090d;
   border-radius: 30px;
+  overflow: hidden;
 }
 
 .title {
   color: #ededed;
   font-size: 24px;
+}
+
+.tableWrapper {
+  overflow-x: scroll;
+  width: 100%;
+  overflow-y: hidden;
+  padding: 20px;
+  padding-bottom: 50px;
+
+  @media (max-width: 768px) {
+    overflow: hidden;
+    padding: unset;
+  }
+}
+
+.scrolledContent {
+  & > div {
+    display: flex;
+  }
+
+  & .react-swipeable-view-container {
+    overflow-x: scroll;
+  }
 }

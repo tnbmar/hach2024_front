@@ -7,6 +7,11 @@
   background-color: #0b090d;
   border-radius: 30px;
   width: 100%;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 20px;
+  }
 }
 
 .avatar {
@@ -44,6 +49,8 @@
 .rightWrapper {
   display: flex;
   gap: 20px;
+  width: 100%;
+  justify-content: space-around;
 }
 
 .attrColumn {

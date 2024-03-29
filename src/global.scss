@@ -2,6 +2,22 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  &::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 60px;
+    background: var(--background-label, #262a33);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--main-light-green, #8e8ffa);
+    border-radius: 60px;
+  }
 }
 
 button {
@@ -12,4 +28,8 @@ button {
 
 a {
   text-decoration: none;
+}
+
+.react-swipeable-view-container {
+  overflow-x: scroll;
 }

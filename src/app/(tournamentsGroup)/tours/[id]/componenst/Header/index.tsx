@@ -23,7 +23,7 @@ const Header = () => {
 
       <div className={S.rightWrap}>
         <span className={S.bank}>Банк</span>
-        <Button>$10</Button>
+        <Button className={S.bankLabel}>$10</Button>
       </div>
     </div>
   );

@@ -16,6 +16,7 @@ const CreateTournament = () => {
       <Button className={S.createTournament} onClick={() => setOpen(true)}>
         Создать турнир +
       </Button>
+
       <DialogModal open={open} onChangeOpen={setOpen} title="Создание турнира">
         <div className={S.content}>
           <Input {...register} placeholder="Название" />

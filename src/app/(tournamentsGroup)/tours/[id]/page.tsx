@@ -1,11 +1,13 @@
 import Header from "./componenst/Header";
 import S from "../../Home.module.scss";
-import Table from "./componenst/Table";
 import Players from "./componenst/Players";
+import dynamic from "next/dynamic";
 
 type TourProps = {
   params: { id: number };
 };
+
+const Table = dynamic(() => import("./componenst/Table"), { ssr: false });
 
 const Tour = ({ params }: TourProps) => {
   console.log(params.id);

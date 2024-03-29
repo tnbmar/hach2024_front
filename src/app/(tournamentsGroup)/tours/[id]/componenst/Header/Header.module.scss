@@ -4,6 +4,8 @@
   border-radius: 30px;
   padding: 20px;
   justify-content: space-between;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .link {
@@ -28,9 +30,19 @@
 .name {
   color: #ededed;
   font-size: 28px;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
 }
 
 .bank {
   color: #ededed;
   font-size: 16px;
+}
+
+.bankLabel {
+  @media (max-width: 768px) {
+    width: fit-content !important;
+  }
 }

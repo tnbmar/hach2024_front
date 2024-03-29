@@ -17,10 +17,55 @@ const rounds: IRoundProps[] = [
         date: new Date().toDateString(),
         teams: [{ name: "Team C" }, { name: "Team D" }],
       },
+      {
+        id: 3,
+        date: new Date().toDateString(),
+        teams: [{ name: "Team C" }, { name: "Team D" }],
+      },
+      {
+        id: 4,
+        date: new Date().toDateString(),
+        teams: [{ name: "Team C" }, { name: "Team D" }],
+      },
     ],
   },
   {
-    title: "Round one",
+    title: "Round two",
+    seeds: [
+      {
+        id: 3,
+        date: new Date().toDateString(),
+        teams: [{ name: "Team A" }, { name: "Team C" }],
+      },
+      {
+        id: 3,
+        date: new Date().toDateString(),
+        teams: [{ name: "Team A" }, { name: "Team C" }],
+      },
+    ],
+  },
+  {
+    title: "Round two",
+    seeds: [
+      {
+        id: 3,
+        date: new Date().toDateString(),
+        teams: [{ name: "Team A" }, { name: "Team C" }],
+      },
+    ],
+  },
+  {
+    title: "Round two",
+    seeds: [
+      {
+        id: 3,
+        date: new Date().toDateString(),
+        teams: [{ name: "Team A" }, { name: "Team C" }],
+      },
+    ],
+  },
+  {
+    title: "Round two",
     seeds: [
       {
         id: 3,
@@ -38,8 +83,8 @@ const Table = () => {
         <span className={S.title}>Турнирная сетка</span>
       </div>
 
-      <div>
-        <Bracket rounds={rounds} />
+      <div className={S.tableWrapper}>
+        <Bracket rounds={rounds} bracketClassName={S.scrolledContent} />
       </div>
     </div>
   );

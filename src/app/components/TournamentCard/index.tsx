@@ -41,7 +41,9 @@ const TournamentCard = ({ tournament }: TournamentCardProps) => {
               {tournament.players}/{MAX_MOCK_PLAYERS}
             </span>
           </div>
+        </div>
 
+        <div className={S.actions}>
           <Button>Спонсировать</Button>
           <Button>Участвовать</Button>
         </div>
