@@ -1,21 +1,45 @@
 "use client";
 
 import { redirect, usePathname } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import jsCookie from "js-cookie";
 import { COOKIES } from "@/constants/cookies";
 import { URLS } from "@/constants/urls";
+import { fetchMe, getStats } from "@/rest/auth";
+import { useUserStore } from "@/stores/user";
+import Loader from "@/ui/Loader";
 
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
+  const setUser = useUserStore((state) => state.setUser);
+  const setStats = useUserStore((state) => state.setStats);
+
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const token = jsCookie.get(COOKIES.TOKEN);
+    const fetchData = async () => {
+      setLoading(true);
+      const token = jsCookie.get(COOKIES.TOKEN);
 
-    if (!token && pathname !== "/auth") {
-      redirect(URLS.AUTH);
-    }
+      if (!token && pathname !== "/auth") {
+        redirect(URLS.AUTH);
+      } else {
+        const { data: me } = await fetchMe();
+
+        setUser(me.user);
+
+        const { data: stats } = await getStats();
+
+        setStats(stats);
+      }
+
+      setLoading(false);
+    };
+
+    fetchData();
   }, []);
+
+  if (loading) return <Loader />;
 
   return <>{children}</>;
 };
