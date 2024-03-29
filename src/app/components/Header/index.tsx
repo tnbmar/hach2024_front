@@ -16,7 +16,8 @@ const Header = () => {
         <div className={S.attrsList}>
           <span className={S.nickname}>username</span>
           <span className={S.idLabel}>id 1</span>
-          <span className={S.mailValue}>mail@mail.ru</span>
+          {/* @ts-ignore */}
+          <w3m-button />
         </div>
       </div>
       <div className={S.rightWrapper}>

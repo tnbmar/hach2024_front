@@ -5,6 +5,7 @@ import Image from "next/image";
 import Button from "@/ui/Button";
 import Link from "next/link";
 import { URLS } from "@/urls";
+import SponsorButton from "../SponsorButton";
 
 type TournamentCardProps = {
   tournament: Tournament;
@@ -44,7 +45,7 @@ const TournamentCard = ({ tournament }: TournamentCardProps) => {
         </div>
 
         <div className={S.actions}>
-          <Button>Спонсировать</Button>
+          <SponsorButton />
           <Button>Участвовать</Button>
         </div>
       </div>

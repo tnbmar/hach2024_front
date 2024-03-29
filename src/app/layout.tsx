@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import WagmiProvider from "@/providers/WagmiProvider";
 
 import "../global.scss";
 
@@ -16,7 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <WagmiProvider>{children}</WagmiProvider>
+      </body>
     </html>
   );
 }
