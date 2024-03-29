@@ -5,4 +5,9 @@
   padding: 0 20px;
   height: 42px;
   width: 100%;
+
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
 }

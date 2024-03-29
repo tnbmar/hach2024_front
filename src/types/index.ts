@@ -17,3 +17,15 @@ export type RegDto = {
   email: string;
   address: string;
 };
+
+export type User = {
+  id: number;
+  username: string;
+  address: string;
+  email: string;
+};
+
+export type ResResponse = {
+  token: string;
+  user: User;
+};
