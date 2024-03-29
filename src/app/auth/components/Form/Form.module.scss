@@ -1,0 +1,24 @@
+.formWrapper {
+  background-color: #0b090d;
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 406px;
+  border-radius: 20px;
+  align-items: center;
+}
+
+.linkWrap {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.link {
+  color: #fff;
+
+  &.active {
+    color: #8e8ffa;
+  }
+}
