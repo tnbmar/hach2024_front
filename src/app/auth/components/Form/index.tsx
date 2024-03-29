@@ -8,12 +8,17 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Button from "@/ui/Button";
 import { AuthDto, RegDto } from "@/types";
-import { signUp } from "@/rest/auth";
+import { signIn, signUp } from "@/rest/auth";
 import { useAccount } from "wagmi";
+import jsCookie from "js-cookie";
+import { COOKIES } from "@/constants/cookies";
+import { useRouter } from "next/navigation";
+import { URLS } from "@/constants/urls";
 
 const Form = () => {
   const [type, setType] = useState<"login" | "signup">("login");
   const { isConnected, address } = useAccount();
+  const router = useRouter();
 
   const { register, handleSubmit } = useForm<AuthDto>({
     defaultValues: { username: "", password: "" },
@@ -24,12 +29,22 @@ const Form = () => {
       defaultValues: { username: "", password: "", address: "", email: "" },
     });
 
-  const handleLogin = handleSubmit((data) => {
-    console.log(data);
+  const handleLogin = handleSubmit(async (data) => {
+    const { data: authRes } = await signIn(data);
+    jsCookie.set(COOKIES.TOKEN, authRes.token);
+    router.push(URLS.MAIN);
   });
 
   const handleRegister = handleSubmitRegister(async (data) => {
-    signUp(data);
+    try {
+      if (!address) throw new Error("Кошелек не подключен");
+      data.address = address;
+      const { data: regRes } = await signUp(data);
+      jsCookie.set(COOKIES.TOKEN, regRes.token);
+      router.push(URLS.MAIN);
+    } catch (e) {
+      console.error(e);
+    }
   });
 
   return (
@@ -53,15 +68,17 @@ const Form = () => {
       {type === "login" && (
         <>
           <Input placeholder="Логин" {...register("username")} />
-          <Input placeholder="Пароль" {...register("password")} />
+          <Input placeholder="Пароль" {...register("password")} type="password" />
           <Button onClick={handleLogin}>Войти</Button>
         </>
       )}
 
       {type === "signup" && (
         <>
-          <Input placeholder="Логин" {...register("username")} />
-          <Input placeholder="Пароль" {...register("password")} />
+          <Input placeholder="Почта" {...registerSignUp("email")} />
+          <Input placeholder="Логин" {...registerSignUp("username")} />
+          <Input placeholder="Пароль" type="password" {...registerSignUp("password")} />
+
           {/* @ts-ignore */}
           <w3m-button />
           <Button onClick={handleRegister} disabled={!isConnected}>
