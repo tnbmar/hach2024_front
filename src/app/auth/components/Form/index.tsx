@@ -7,21 +7,29 @@ import classNames from "classnames";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Button from "@/ui/Button";
-
-type AuthDto = {
-  login: string;
-  password: string;
-};
+import { AuthDto, RegDto } from "@/types";
+import { signUp } from "@/rest/auth";
+import { useAccount } from "wagmi";
 
 const Form = () => {
   const [type, setType] = useState<"login" | "signup">("login");
+  const { isConnected, address } = useAccount();
 
   const { register, handleSubmit } = useForm<AuthDto>({
-    defaultValues: { login: "", password: "" },
+    defaultValues: { username: "", password: "" },
   });
+
+  const { register: registerSignUp, handleSubmit: handleSubmitRegister } =
+    useForm<RegDto>({
+      defaultValues: { username: "", password: "", address: "", email: "" },
+    });
 
   const handleLogin = handleSubmit((data) => {
     console.log(data);
+  });
+
+  const handleRegister = handleSubmitRegister(async (data) => {
+    signUp(data);
   });
 
   return (
@@ -44,9 +52,21 @@ const Form = () => {
 
       {type === "login" && (
         <>
-          <Input placeholder="Логин" {...register("login")} />
+          <Input placeholder="Логин" {...register("username")} />
           <Input placeholder="Пароль" {...register("password")} />
           <Button onClick={handleLogin}>Войти</Button>
+        </>
+      )}
+
+      {type === "signup" && (
+        <>
+          <Input placeholder="Логин" {...register("username")} />
+          <Input placeholder="Пароль" {...register("password")} />
+          {/* @ts-ignore */}
+          <w3m-button />
+          <Button onClick={handleRegister} disabled={!isConnected}>
+            Войти
+          </Button>
         </>
       )}
     </form>

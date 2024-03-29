@@ -4,7 +4,7 @@ import { Tournament } from "@/types";
 import Image from "next/image";
 import Button from "@/ui/Button";
 import Link from "next/link";
-import { URLS } from "@/urls";
+import { URLS } from "@/constants/urls";
 import SponsorButton from "../SponsorButton";
 
 type TournamentCardProps = {
