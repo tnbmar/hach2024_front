@@ -1,8 +1,9 @@
 import classNames from "classnames";
 import S from "./Badge.module.scss";
+import { Status } from "@/types";
 
 type BadgeProps = {
-  status: "wait" | "progress" | "closed";
+  status: Status;
   children: React.ReactNode;
 };
 

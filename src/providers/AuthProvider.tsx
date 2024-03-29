@@ -23,7 +23,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
       if (!token && pathname !== "/auth") {
         redirect(URLS.AUTH);
-      } else {
+      } else if (token) {
         const { data: me } = await fetchMe();
 
         setUser(me.user);

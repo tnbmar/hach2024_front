@@ -14,6 +14,7 @@ const TournamentsList = ({ list }: { list: TournamentsListItem[] }) => {
   useEffect(() => {
     setTournament(list);
   }, [list]);
+
   return (
     <div className={S.wrap}>
       <div className={S.headerWrap}>

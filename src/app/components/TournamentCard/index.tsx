@@ -64,7 +64,7 @@ const TournamentCard = ({ icon, id, name, status, users }: TournamentsListItem) 
           <div className={S.column}>
             <span className={S.columnTitle}>Cтатус</span>
 
-            <Badge status={validateStatus}>{TournamentEnum[status]}</Badge>
+            <Badge status={status}>{TournamentEnum[status]}</Badge>
           </div>
 
           <div className={S.column}>

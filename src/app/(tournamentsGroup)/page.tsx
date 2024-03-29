@@ -8,6 +8,7 @@ import { getRewards } from "@/rest/rewards";
 
 const Home = async () => {
   const token = cookies().get(COOKIES.TOKEN)?.value;
+
   const {
     data: { list },
   } = await getTournaments(token);
@@ -17,7 +18,7 @@ const Home = async () => {
   } = await getRewards(token);
   return (
     <>
-      <Rewards rewards={rewards}/>
+      <Rewards rewards={rewards} />
       <Header />
       <TournamentsList list={list} />
     </>

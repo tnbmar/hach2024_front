@@ -1,4 +1,3 @@
-import { Tournament, TournamentsListItem } from "@/types";
 import TournamentCard from "../TournamentCard";
 import S from "./Tournaments.module.scss";
 import { useTournamentsStore } from "@/stores/tournaments";
