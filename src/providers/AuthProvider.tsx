@@ -1,6 +1,6 @@
 "use client";
 
-import { redirect, usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import jsCookie from "js-cookie";
 import { COOKIES } from "@/constants/cookies";
@@ -13,6 +13,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
   const setUser = useUserStore((state) => state.setUser);
   const setStats = useUserStore((state) => state.setStats);
+  const router = useRouter();
 
   const [loading, setLoading] = useState(false);
 
@@ -22,7 +23,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       const token = jsCookie.get(COOKIES.TOKEN);
 
       if (!token && pathname !== "/auth") {
-        redirect(URLS.AUTH);
+        router.push(URLS.AUTH);
       } else if (token) {
         const { data: me } = await fetchMe();
 

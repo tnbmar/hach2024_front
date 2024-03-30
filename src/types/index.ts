@@ -78,8 +78,8 @@ export type Info = {
   icon: string;
   createdAt: string;
   status: Status;
-  winner_id: null;
-  winner: null;
+  winner_id: null | number;
+  winner: null | User;
   users: User[];
 };
 

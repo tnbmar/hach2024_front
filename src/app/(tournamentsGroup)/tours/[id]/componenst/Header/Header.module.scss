@@ -49,3 +49,14 @@
     width: fit-content !important;
   }
 }
+
+.winner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.winner_name {
+  color: #ededed;
+  font-size: 16px;
+}

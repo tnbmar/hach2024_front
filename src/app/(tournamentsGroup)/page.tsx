@@ -8,22 +8,24 @@ import { getRewards } from "@/rest/rewards";
 
 const Home = async () => {
   const token = cookies().get(COOKIES.TOKEN)?.value;
+  try {
+    const {
+      data: { list },
+    } = await getTournaments(token);
 
-  const {
-    data: { list },
-  } = await getTournaments(token);
-
-  const {
-    data: { results: rewards },
-  } = await getRewards(token);
-
-  return (
-    <>
-      <Rewards rewards={rewards} />
-      <Header />
-      <TournamentsList list={list} />
-    </>
-  );
+    const {
+      data: { results: rewards },
+    } = await getRewards(token);
+    return (
+      <>
+        <Header />
+        <Rewards rewards={rewards} />
+        <TournamentsList list={list} />
+      </>
+    );
+  } catch {
+    return <div></div>;
+  }
 };
 
 export default Home;

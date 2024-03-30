@@ -2,11 +2,20 @@
 
 import { Bracket, IRoundProps } from "react-brackets";
 import S from "./Table.module.scss";
-import { Tour } from "@/types";
+import { Tour, User } from "@/types";
 import { useMemo } from "react";
 import dayjs from "dayjs";
 
-const Table = ({ tours }: { tours: Tour[] }) => {
+const Table = ({ tours, users }: { tours: Tour[]; users: User[] }) => {
+  const getUsername = (id: number) => {
+    const currentUser = users.find((elem) => elem.id === id);
+    if (currentUser) {
+      return currentUser.username;
+    } else {
+      return `User ${id}`;
+    }
+  };
+
   const formattedData = useMemo(() => {
     const rounds: IRoundProps[] = tours.map((tour, i) => ({
       title: `Tour ${i + 1}`,
@@ -15,8 +24,16 @@ const Table = ({ tours }: { tours: Tour[] }) => {
           id: match.id,
           date: dayjs(match.createdAt).format("DD.MM.YYYY HH:mm"),
           teams: [
-            { name: `User #${match.first_player_id}` },
-            { name: `User #${match.second_player_id}` },
+            {
+              name: `${getUsername(match.first_player_id)}${"ㅤㅤㅤ"}${
+                match.first_score
+              }`,
+            },
+            {
+              name: `${getUsername(match.second_player_id)}${"ㅤㅤㅤ"}${
+                match.second_score
+              }`,
+            },
           ],
         })),
       ],

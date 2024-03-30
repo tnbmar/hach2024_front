@@ -18,8 +18,11 @@ const Header = ({ info }: { info: Info }) => {
         </Link>
 
         <span className={S.name}>{info.name}</span>
-
         <Badge status={info.status}>{info.status}</Badge>
+        <div className={S.winner}>
+          <span className={S.winner_name}>Победитель</span>
+          <span className={S.winner_name}>{info.winner?.username}</span>
+        </div>
       </div>
 
       <div className={S.rightWrap}>

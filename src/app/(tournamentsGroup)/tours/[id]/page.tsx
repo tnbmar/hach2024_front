@@ -40,7 +40,7 @@ const Tour = ({ params }: TourProps) => {
     <>
       <Header info={data.info} />
       <div className={S.content}>
-        <Table tours={data.mathes} />
+        <Table tours={data.mathes} users={data.info.users} />
         <Players users={data.info.users} />
       </div>
     </>
