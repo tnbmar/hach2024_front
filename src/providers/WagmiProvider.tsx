@@ -5,12 +5,14 @@ import { sepolia } from "wagmi/chains";
 import { WagmiProvider as WagmiProviderConfigurated } from "wagmi";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createWeb3Modal } from "@web3modal/wagmi";
+import { walletConnect } from "wagmi/connectors";
 
 export const config = createConfig({
   chains: [sepolia],
   transports: {
     [sepolia.id]: http(),
   },
+  connectors: [walletConnect({ projectId: "1effc4f9fd017d11f394606d6103bfff" })],
 });
 
 const metadata = {
