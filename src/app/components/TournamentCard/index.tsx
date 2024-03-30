@@ -19,7 +19,14 @@ type TournamentCardProps = {
 
 const MAX_MOCK_PLAYERS = 8;
 
-const TournamentCard = ({ icon, id, name, status, users }: TournamentsListItem) => {
+const TournamentCard = ({
+  icon,
+  id,
+  name,
+  status,
+  users,
+  winner,
+}: TournamentsListItem) => {
   const { setTournament } = useTournamentsStore();
   const { user } = useUserStore();
 
@@ -75,18 +82,26 @@ const TournamentCard = ({ icon, id, name, status, users }: TournamentsListItem) 
             </span>
           </div>
         </div>
-
-        <div className={S.actions}>
-          <SponsorButton />
-          {validateMyStatus ? (
+        {status === "FINISHED" ? (
+          <div className={S.finished}>
+            <span className={S.username}>Победитель</span>
             <div className={S.accept}>
-              <Image src={"/icons/access.svg"} width={20} height={20} alt="" />
-              <span className={S.columnTitle}>Вы учавствуете</span>
+              <span className={S.username}>{winner?.username}</span>
             </div>
-          ) : (
-            <Button onClick={acceptTournament}>Участвовать</Button>
-          )}
-        </div>
+          </div>
+        ) : (
+          <div className={S.actions}>
+            <SponsorButton />
+            {validateMyStatus ? (
+              <div className={S.accept}>
+                <Image src={"/icons/access.svg"} width={20} height={20} alt="" />
+                <span className={S.columnTitle}>Вы учавствуете</span>
+              </div>
+            ) : (
+              <Button onClick={acceptTournament}>Участвовать</Button>
+            )}
+          </div>
+        )}
       </div>
     </Link>
   );

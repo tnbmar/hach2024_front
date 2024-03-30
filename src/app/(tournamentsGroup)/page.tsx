@@ -18,8 +18,8 @@ const Home = async () => {
     } = await getRewards(token);
     return (
       <>
-        <Rewards rewards={rewards} />
         <Header />
+        <Rewards rewards={rewards} />
         <TournamentsList list={list} />
       </>
     );

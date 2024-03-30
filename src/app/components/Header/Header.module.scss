@@ -16,6 +16,19 @@
 
 .avatar {
   border-radius: 15px;
+  width: 80px;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #8e8ffa;
+}
+
+.avatar_nick {
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 28px;
+  font-weight: 700;
 }
 
 .leftWrapper {

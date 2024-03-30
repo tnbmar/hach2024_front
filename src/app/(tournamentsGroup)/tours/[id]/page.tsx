@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import { getTournament } from "@/rest/tournaments";
 import { cookies } from "next/headers";
 import { COOKIES } from "@/constants/cookies";
+import { User } from "@/types";
 
 type TourProps = {
   params: { id: number };
@@ -22,7 +23,7 @@ const Tour = async ({ params }: TourProps) => {
     <>
       <Header info={data.info} />
       <div className={S.content}>
-        <Table tours={data.mathes} />
+        <Table tours={data.mathes} users={data.info.users} />
         <Players users={data.info.users} />
       </div>
     </>

@@ -11,13 +11,10 @@ const Header = () => {
   return (
     <header className={S.headerWrap}>
       <div className={S.leftWrapper}>
-        <Image
-          className={S.avatar}
-          src={"/images/default.webp"}
-          alt="username"
-          width={80}
-          height={80}
-        />
+       
+        <div className={S.avatar}>
+          <span className={S.avatar_nick}>{user?.username[0]}</span>
+        </div>
         <div className={S.attrsList}>
           <span className={S.nickname}>{user?.username}</span>
           <span className={S.idLabel}>id {user?.id}</span>
