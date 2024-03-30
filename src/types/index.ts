@@ -81,6 +81,7 @@ export type Info = {
   winner_id: null | number;
   winner: null | User;
   users: User[];
+  blockchain_id: number;
 };
 
 export type Match = {

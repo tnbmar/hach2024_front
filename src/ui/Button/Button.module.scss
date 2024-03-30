@@ -5,6 +5,9 @@
   padding: 0 20px;
   height: 42px;
   width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 
   &:disabled {
     opacity: 0.5;

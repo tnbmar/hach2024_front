@@ -38,7 +38,7 @@ const Tour = ({ params }: TourProps) => {
 
   return (
     <>
-      <Header info={data.info} />
+      <Header info={data.info} blockchain_id={data.info.blockchain_id} />
       <div className={S.content}>
         <Table tours={data.mathes} users={data.info.users} />
         <Players users={data.info.users} />
