@@ -23,17 +23,6 @@ const TournamentCard = ({ icon, id, name, status, users }: TournamentsListItem) 
   const { setTournament } = useTournamentsStore();
   const { user } = useUserStore();
 
-  const validateStatus = useMemo(() => {
-    switch (status) {
-      case "FUTURE":
-        return "wait";
-      case "FINISHED":
-        return "closed";
-      case "NOW":
-        return "progress";
-    }
-  }, [status]);
-
   const validateMyStatus = useMemo(() => {
     if (user) {
       return users.find((elem) => elem.id === user.id);
@@ -41,7 +30,7 @@ const TournamentCard = ({ icon, id, name, status, users }: TournamentsListItem) 
   }, [user]);
 
   const acceptTournament = async () => {
-    const { data } = await signInTournament(id);
+    await signInTournament(id);
     updateData();
   };
 

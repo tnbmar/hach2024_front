@@ -16,6 +16,7 @@ const Home = async () => {
   const {
     data: { results: rewards },
   } = await getRewards(token);
+
   return (
     <>
       <Rewards rewards={rewards} />

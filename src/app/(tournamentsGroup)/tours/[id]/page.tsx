@@ -1,10 +1,13 @@
+"use client";
+
 import Header from "./componenst/Header";
 import S from "../../Home.module.scss";
 import Players from "./componenst/Players";
 import dynamic from "next/dynamic";
 import { getTournament } from "@/rest/tournaments";
-import { cookies } from "next/headers";
-import { COOKIES } from "@/constants/cookies";
+import { useEffect, useState } from "react";
+import { TournamentReceive } from "@/types";
+import Loader from "@/ui/Loader";
 
 type TourProps = {
   params: { id: number };
@@ -12,11 +15,26 @@ type TourProps = {
 
 const Table = dynamic(() => import("./componenst/Table"), { ssr: false });
 
-const Tour = async ({ params }: TourProps) => {
-  const token = cookies().get(COOKIES.TOKEN)?.value;
-  if (!token || !params.id) throw new Error("Отсутствуют данные для загрузки турнира");
+const Tour = ({ params }: TourProps) => {
+  if (!params.id) throw new Error("Отсутствуют данные для загрузки турнира");
+  const [data, setData] = useState<TournamentReceive | null>(null);
 
-  const { data } = await getTournament(+params.id, token);
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await getTournament(+params.id);
+      setData(data);
+    };
+
+    const interval = setInterval(() => {
+      fetchData();
+    }, 4000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [params.id]);
+
+  if (!data) return <Loader />;
 
   return (
     <>
